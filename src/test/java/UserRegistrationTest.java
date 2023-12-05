@@ -11,10 +11,8 @@ class UserRegistrationTest {
         assertFalse(isValidFirstName("Anu@sh"));
         assertTrue(isValidFirstName("John"));
     }
-
     public boolean isValidFirstName(String firstName){
         String test = "^[A-Z][a-zA-z]{2,}$";
         return firstName.matches(test);
     }
-
 }
