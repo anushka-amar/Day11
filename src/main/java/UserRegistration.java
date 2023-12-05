@@ -3,6 +3,7 @@ public class UserRegistration {
     private String firstName;
     private String lastname;
     private String email;
+    private String phone_number;
 
     public void setFirstName(String firstName){
         if(isValidFirstName(firstName)){
@@ -26,6 +27,14 @@ public class UserRegistration {
         }
         System.out.println("Email address invalid");
     }
+
+    public void setPhone_number(String phone_number){
+        if(isValidPhNumber(phone_number)){
+            this.phone_number = phone_number;
+            return;
+        }
+        System.out.println("please enter a valid phone number with country code");
+    }
     public boolean isValidFirstName(String firstName){
         String test = "^[A-Z][a-zA-z]{2,}$";
         return firstName.matches(test);
@@ -34,6 +43,10 @@ public class UserRegistration {
     public boolean isValidEmail(String email){
         String test = "^[a-z]+(\\.[a-z]+)*@([a-z]+\\.)+[a-z]{2,7}";
         return email.matches(test);
+    }
+
+    public boolean isValidPhNumber(String phone_number){
+        return false;
     }
     public void displayUser(){
         System.out.println("Name: "+firstName+" "+lastname);
