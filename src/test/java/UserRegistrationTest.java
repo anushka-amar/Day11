@@ -23,6 +23,12 @@ class UserRegistrationTest {
         assertFalse(isValidPhNumber("919946782345"));
     }
 
+    @Test
+    public void passwordValidator(){
+        assertTrue(isValidPassword("qwerty123"));
+        assertFalse(isValidPassword("qwer"));
+    }
+
     public boolean isValidFirstName(String firstName){
         String test = "^[A-Z][a-zA-z]{2,}$";
         return firstName.matches(test);
@@ -34,5 +40,9 @@ class UserRegistrationTest {
     public boolean isValidPhNumber(String phone_number){
         String test = "^([0-9]{2}) ([0-9]{10})$";
         return phone_number.matches(test);
+    }
+    public boolean isValidPassword(String password){
+        String test = "[a-zA-z0-9]{8,}";
+        return password.matches(test);
     }
 }

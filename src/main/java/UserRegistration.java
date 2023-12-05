@@ -4,6 +4,7 @@ public class UserRegistration {
     private String lastname;
     private String email;
     private String phone_number;
+    private String password;
 
     public void setFirstName(String firstName){
         if(isValidFirstName(firstName)){
@@ -35,6 +36,14 @@ public class UserRegistration {
         }
         System.out.println("please enter a valid phone number with country code");
     }
+
+    public void setPassword(String password){
+        if(isValidPassword(password)){
+            this.password = password;
+            return;
+        }
+        System.out.println("Enter a valid password");
+    }
     public boolean isValidFirstName(String firstName){
         String test = "^[A-Z][a-zA-z]{2,}$";
         return firstName.matches(test);
@@ -46,11 +55,19 @@ public class UserRegistration {
     }
 
     public boolean isValidPhNumber(String phone_number){
-        return false;
+        String test = "^([0-9]{2}) ([0-9]{10})$";
+        return phone_number.matches(test);
+    }
+
+    public boolean isValidPassword(String password){
+        String test = "[a-zA-z0-9]{8,}";
+        return password.matches(test);
     }
     public void displayUser(){
         System.out.println("Name: "+firstName+" "+lastname);
         System.out.println("Email: "+email);
+        System.out.println("Phone Number: "+phone_number);
+        System.out.println("Password: "+password);
     }
 
     public static void main(String[] args) {
@@ -58,6 +75,8 @@ public class UserRegistration {
         user.setFirstName("Anushka");
         user.setLastName("Amar");
         user.setEmail("anushka.amar@java.gmail.com");
+        user.setPhone_number("91 8969492195");
+        user.setPassword("qwertyui");
         user.displayUser();
     }
 }
