@@ -60,7 +60,7 @@ public class UserRegistration {
     }
 
     public boolean isValidPassword(String password){
-        String test = "[a-zA-z0-9]{8,}";
+        String test = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$*&]).{8,}$";
         return password.matches(test);
     }
     public void displayUser(){
@@ -76,7 +76,7 @@ public class UserRegistration {
         user.setLastName("Amar");
         user.setEmail("anushka.amar@java.gmail.com");
         user.setPhone_number("91 8969492195");
-        user.setPassword("qwertyui");
+        user.setPassword("vaLidpw@123");
         user.displayUser();
     }
 }

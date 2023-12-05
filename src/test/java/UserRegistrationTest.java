@@ -4,41 +4,33 @@ import static org.junit.jupiter.api.Assertions.*;
 class UserRegistrationTest {
 
     @Test
-    public void firstNameValidator(){
-        assertFalse(isValidFirstName("an"));
-        assertFalse(isValidFirstName("anushka"));
-        assertFalse(isValidFirstName("Anu@sh"));
-        assertTrue(isValidFirstName("John"));
-    }
-    @Test
-    public void emailValidator(){
-        assertTrue(isValidEmail("abc.xyz@bl.co.in"));
-        assertFalse(isValidEmail("abc@.in")); //as subdomain is mandatory
-        assertFalse(isValidEmail("abc.@.in"));
-    }
-    @Test
-    public void numberValidator(){
-        assertTrue(isValidPhNumber("91 9946782345"));
-        assertFalse(isValidPhNumber("9894782345"));
-        assertFalse(isValidPhNumber("919946782345"));
+    public void firstNameValidator() {
+        String regex = "^[A-Z][a-zA-z]{2,}$";
+        assertFalse("an".matches(regex));
+        assertFalse("anushka".matches(regex));
+        assertFalse("Anu@sh".matches(regex));
+        assertTrue("John".matches(regex));
     }
 
     @Test
-    public void passwordValidator(){
-        String regex = "^(?=.*[A-Z])(?=.*[0-9]).{8,}$";
-        assertTrue("vaLid23pw".matches(regex));
+    public void emailValidator() {
+        String regex = "^[a-z]+(\\.[a-z]+)*@([a-z]+\\.)+[a-z]{2,7}$";
+        assertTrue("abc.xyz@bl.co.in".matches(regex));
+        assertFalse("abc@.in".matches(regex)); //as subdomain is mandatory
+        assertFalse("abc.@.in".matches(regex));
     }
 
-    public boolean isValidFirstName(String firstName){
-        String test = "^[A-Z][a-zA-z]{2,}$";
-        return firstName.matches(test);
+    @Test
+    public void numberValidator() {
+        String regex = "^([0-9]{2}) ([0-9]{10})$";
+        assertTrue("91 9946782345".matches(regex));
+        assertFalse("9894782345".matches(regex));
+        assertFalse("919946782345".matches(regex));
     }
-    public boolean isValidEmail(String email){
-        String test = "^[a-z]+(\\.[a-z]+)*@([a-z]+\\.)+[a-z]{2,7}$";
-        return email.matches(test);
-    }
-    public boolean isValidPhNumber(String phone_number){
-        String test = "^([0-9]{2}) ([0-9]{10})$";
-        return phone_number.matches(test);
+
+    @Test
+    public void passwordValidator() {
+        String regex = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$*&]).{8,}$";
+        assertTrue("vaLid@23pw".matches(regex));
     }
 }
