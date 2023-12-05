@@ -25,8 +25,8 @@ class UserRegistrationTest {
 
     @Test
     public void passwordValidator(){
-        String regex = "^(?=.*[A-Z]).{8,}$";
-        assertTrue("qwertAy123".matches(regex));
+        String regex = "^(?=.*[A-Z])(?=.*[0-9]).{8,}$";
+        assertTrue("vaLid23pw".matches(regex));
     }
 
     public boolean isValidFirstName(String firstName){
