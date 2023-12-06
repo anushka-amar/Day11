@@ -1,5 +1,4 @@
 public class UserRegistration {
-
     private String firstName;
     private String lastname;
     private String email;
